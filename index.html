@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Caça - Sensy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+      color: #eee;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+    header img {
+      width: 160px;
+      filter: drop-shadow(0 0 5px #ff4e8b);
+    }
+    .section {
+      padding: 30px 20px;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .intro {
+      font-size: 26px;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    #descricao-jogo {
+      background: #1e1e1e;
+      color: #f3f3f3;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 25px rgba(255, 78, 139, 0.1);
+      margin: 40px auto;
+      animation: fadeIn 1s ease-in-out;
+    }
+    #descricao-jogo h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: #ff4e8b;
+    }
+    ul {
+      text-align: left;
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #ff4e8b;
+    }
+    .roles {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px auto;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    .role-box {
+      background-color: #222;
+      border-radius: 14px;
+      padding: 25px;
+      width: 320px;
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+    .role-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(255, 78, 139, 0.3);
+    }
+    .role-box img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .info-box {
+      background-color: #222;
+      border-radius: 14px;
+      padding: 30px;
+      margin: 30px auto;
+      max-width: 700px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      animation: fadeIn 1.4s ease-in-out;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background-color: #1c1c1c;
+      padding: 40px;
+      border-radius: 14px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 78, 139, 0.3);
+      color: #fff;
+    }
+    .close {
+      float: right;
+      font-size: 26px;
+      cursor: pointer;
+      color: #ff4e8b;
+    }
+    input[type="text"], input[type="email"], input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+      font-size: 15px;
+    }
+    button {
+      background: #ff4e8b;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #ff6a9f;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      .roles {
+        flex-direction: column;
+        align-items: center;
+      }
+      .role-box {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="sensybg.png" alt="Logo Sensy">
+  </header>
+
+  <section class="section">
+    <div class="intro">Você foi convidado para o <span class="highlight">jogo da caça</span></div>
+
+    <div id="descricao-jogo">
+      <h2>Onde o segredo encontra a vida real</h2>
+      <p>Existe um jogo acontecendo silencioso, elegante e eletrizante.</p>
+      <p>Na brincadeira da <strong>Caça</strong>, duas peças se completam: <strong>o pingente do Caçador</strong> e <strong>o pingente da Caça</strong>.</p>
+      <p>Ambos caminham entre nós, discretos, mas atentos. Eles carregam o símbolo do desejo oculto, do toque que ainda não aconteceu, da conexão prestes a ser revelada.</p>
+      <p><strong>A regra é simples:</strong></p>
+      <ul>
+        <li>🔸 <strong>Se você encontrar alguém usando o pingente complementar ao seu, você pode abordar</strong></li>
+        <li>🔸 <strong>Essa é a única ponte entre o mistério online e a faísca na vida real.</strong></li>
+        <li>🔸 <strong>Tudo nasce do olhar, do gesto e da vontade mútua.</strong></li>
+        <li>🔸 <strong>A abordagem da caça e do caçador tem que ser sigilosa e sozinha</strong></li>
+      </ul>
+      <p>Não há likes, não há matches.<br>Conexão acontece no mundo real, no tempo certo, no lugar certo.</p>
+      <p>Essa é a <span class="highlight">Sensy Caça</span>. Um convite ao jogo, à sedução silenciosa e à liberdade de explorar o desejo com respeito, consentimento e intensidade.</p>
+      <h2>Escolha com sabedoria</h2>
+    </div>
+
+    <div class="roles" id="escolha-personagem">
+      <div class="role-box" id="card-cacador" onclick="abrirModal('Caçador')">
+        <h2>Caçador</h2>
+        <p>Identifique as Caças através de pequenos sinais e abordagens elegantes.</p>
+        <img src="cacador.png" alt="Imagem Caçador">
+      </div>
+      <div class="role-box" id="card-caca" onclick="abrirModal('Caça')">
+        <h2>Caça</h2>
+        <p>Use seu pingente com discrição e veja quem é capaz de reconhecê-lo.</p>
+        <img src="caca.png" alt="Imagem Caça">
+      </div>
+    </div>
+
+    <div class="info-box" id="regras-jogo">
+      <h2>Regras do Jogo</h2>
+      <p>1. O jogo é consensual e sigiloso.<br>
+         2. O uso do pingente é obrigatório.<br>
+         3. A abordagem deve ser sutil e respeitosa.<br>
+         4. Eventos serão divulgados para encontros.<br>
+         5. Sempre respeite os limites definidos.</p>
+    </div>
+
+    <div class="info-box" id="beneficios-jogo">
+      <h2>Benefícios</h2>
+      <p>Ao participar, você receberá:<br>
+         - Um pingente exclusivo (Caça ou Caçador)<br>
+         - Acesso VIP aos eventos da Sensy<br>
+         - Acesso premium ao APP Sensy com recursos exclusivos</p>
+    </div>
+  </section>
+
+  <div id="modalCadastro" class="modal">
+    <div class="modal-content" id="formulario-cadastro">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <h2 id="tituloModal">Cadastro</h2>
+      <p>Você receberá seu pingente com todas as instruções, de forma segura e discreta.</p>
+      <form>
+        <input type="text" placeholder="Nome" required><br>
+        <input type="text" placeholder="Sobrenome" required><br>
+        <input type="email" placeholder="E-mail" required><br>
+        <input type="tel" placeholder="Telefone" required><br>
+        <input type="text" placeholder="Endereço para envio do pingente" required><br>
+        <button type="submit">Finalizar Cadastro</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal(papel) {
+      document.getElementById('tituloModal').innerText = "Cadastro - " + papel;
+      document.getElementById('modalCadastro').style.display = "flex";
+    }
+
+    function fecharModal() {
+      document.getElementById('modalCadastro').style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
