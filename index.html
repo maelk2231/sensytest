@@ -12,6 +12,79 @@
       color: #eee;
       margin: 0;
       padding: 0;
+      overflow: hidden;
+    }
+    .blurred {
+      filter: blur(10px);
+      pointer-events: none;
+      user-select: none;
+    }
+    #accessModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #accessModalContent {
+      background-color: #1e1e1e;
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 0 20px rgba(255, 78, 139, 0.3);
+      text-align: center;
+    }
+    #accessModalContent h2 {
+      color: #ff4e8b;
+      margin-bottom: 20px;
+    }
+    #accessInput {
+      padding: 12px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+      background: #333;
+      color: #fff;
+    }
+    #accessModalContent button {
+      padding: 10px 20px;
+      background: #ff4e8b;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+    }
+    #accessModalContent button:hover {
+      background-color: #ff6a9f;
+    }
+  </style>
+</head>
+<body>
+  <div id="accessModal">
+    <div id="accessModalContent">
+      <h2>Digite o código de acesso</h2>
+      <input type="text" id="accessInput" placeholder="Digite o código">
+      <br>
+      <button onclick="verificarCodigo()">Acessar</button>
+    </div>
+  </div>
+
+  <div id="conteudo" class="blurred">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+      color: #eee;
+      margin: 0;
+      padding: 0;
     }
     header {
       text-align: center;
@@ -173,10 +246,10 @@
       <p>Ambos caminham entre nós, discretos, mas atentos. Eles carregam o símbolo do desejo oculto, do toque que ainda não aconteceu, da conexão prestes a ser revelada.</p>
       <p><strong>A regra é simples:</strong></p>
       <ul>
-        <li>🔸 <strong>Se você encontrar alguém usando o pingente complementar ao seu, você pode abordar</strong></li>
-        <li>🔸 <strong>Essa é a única ponte entre o mistério online e a faísca na vida real.</strong></li>
-        <li>🔸 <strong>Tudo nasce do olhar, do gesto e da vontade mútua.</strong></li>
-        <li>🔸 <strong>A abordagem da caça e do caçador tem que ser sigilosa e sozinha</strong></li>
+        🔸 <strong>Se você encontrar alguém usando o pingente complementar ao seu, você pode abordar</strong><br>
+        🔸 <strong>Essa é a única ponte entre o mistério online e a faísca na vida real.</strong><br>
+        🔸 <strong>Tudo nasce do olhar, do gesto e da vontade mútua.</strong><br>
+        🔸 <strong>A abordagem da caça e do caçador tem que ser sigilosa e sozinha</strong><br>
       </ul>
       <p>Não há likes, não há matches.<br>Conexão acontece no mundo real, no tempo certo, no lugar certo.</p>
       <p>Essa é a <span class="highlight">Sensy Caça</span>. Um convite ao jogo, à sedução silenciosa e à liberdade de explorar o desejo com respeito, consentimento e intensidade.</p>
@@ -229,10 +302,21 @@
       </form>
     </div>
   </div>
+  </div>
 
   <script>
-    function abrirModal(papel) {
-      document.getElementById('tituloModal').innerText = "Cadastro - " + papel;
+    function verificarCodigo() {
+      const input = document.getElementById("accessInput").value;
+      if (input === "123") {
+        document.getElementById("accessModal").style.display = "none";
+        document.getElementById("conteudo").classList.remove("blurred");
+        document.body.style.overflow = 'auto';
+      } else {
+        alert("Código incorreto. Tente novamente.");
+      }
+    }
+        function abrirModal(papel) {
+      document.getElementById('tituloModal').innerText = "Cadastro " + papel;
       document.getElementById('modalCadastro').style.display = "flex";
     }
 
