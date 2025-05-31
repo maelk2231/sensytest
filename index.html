@@ -70,6 +70,17 @@
     #accessModalContent button:hover {
       background-color: #ff6a9f;
     }
+    #accessError {
+  color: #ff4e8b;
+  margin-top: 10px;
+  font-size: 14px;
+  display: none;
+}
+
+input.error {
+  border: 2px solid #ff4e8b;
+}
+
   </style>
 </head>
 <body>
@@ -77,6 +88,7 @@
     <div id="accessModalContent">
       <h2>Digite o código de acesso</h2>
       <input type="text" id="accessInput" placeholder="Digite o código">
+      <span id="accessError">Código inválido. Tente novamente.</span>
       <br>
       <button onclick="verificarCodigo()">Acessar</button>
     </div>
@@ -253,7 +265,7 @@
 
         🔸 <strong>Se você encontrar alguém usando o pingente complementar ao seu, você pode abordar</strong> 🔸<br>
         🔸 <strong>Essa é a única ponte entre o mistério online e a faísca na vida real.</strong> 🔸<br>
-        🔸 <strong>Tudo nasce do olhar, do gesto e da vontade mútua.</strong><br>
+        🔸 <strong>Tudo nasce do olhar, do gesto e da vontade mútua.</strong> 🔸<br>
         🔸 <strong>A abordagem da caça e do caçador tem que ser sigilosa e sozinha</strong> 🔸<br>
 
       <p>Não há likes, não há matches.<br>Conexão acontece no mundo real, no tempo certo, no lugar certo.</p>
@@ -319,15 +331,23 @@
 
   <script>
     function verificarCodigo() {
-      const input = document.getElementById("accessInput").value;
-      if (input === "123") {
-        document.getElementById("accessModal").style.display = "none";
-        document.getElementById("conteudo").classList.remove("blurred");
-        document.body.style.overflow = 'auto';
-      } else {
-        alert("Código incorreto. Tente novamente.");
-      }
-    }
+  const input = document.getElementById("accessInput");
+  const errorMsg = document.getElementById("accessError");
+
+  if (input.value === "123") {
+    document.getElementById("accessModal").style.display = "none";
+    document.getElementById("conteudo").classList.remove("blurred");
+    document.body.style.overflow = 'auto';
+
+    // limpa estado de erro
+    input.classList.remove("error");
+    errorMsg.style.display = "none";
+  } else {
+    input.classList.add("error");
+    errorMsg.style.display = "block";
+  }
+}
+
         function abrirModal(papel) {
       document.getElementById('tituloModal').innerText = "Cadastro " + papel;
       document.getElementById('modalCadastro').style.display = "flex";
