@@ -6,6 +6,11 @@
   <title>Jogo da Caça - Sensy</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    .success-message {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
@@ -292,14 +297,22 @@
       <span class="close" onclick="fecharModal()">&times;</span>
       <h2 id="tituloModal">Cadastro</h2>
       <p>Você receberá seu pingente com todas as instruções, de forma segura e discreta.</p>
-      <form>
-        <input type="text" placeholder="Nome" required><br>
-        <input type="text" placeholder="Sobrenome" required><br>
-        <input type="email" placeholder="E-mail" required><br>
-        <input type="tel" placeholder="Telefone" required><br>
-        <input type="text" placeholder="Endereço para envio do pingente" required><br>
-        <button type="submit">Finalizar Cadastro</button>
-      </form>
+<div id="formulario">
+  <form onsubmit="concluirCadastro(event)">
+    <input type="text" placeholder="Nome" required><br>
+    <input type="text" placeholder="Sobrenome" required><br>
+    <input type="email" placeholder="E-mail" required><br>
+    <input type="tel" placeholder="Telefone" required><br>
+    <input type="text" placeholder="Endereço para envio do pingente" required><br>
+    <button type="submit">Finalizar Cadastro</button>
+  </form>
+</div>
+<div id="mensagemSucesso" class="success-message">
+  <h2>Cadastro concluído com sucesso!</h2>
+  <p>Seu pingente será enviado com segurança. Agora, queremos saber como melhorar.</p>
+  <button onclick="responderPesquisa()">Responder pesquisa de melhoria</button>
+</div>
+
     </div>
   </div>
   </div>
@@ -329,6 +342,16 @@
         event.target.style.display = "none";
       }
     }
+    function concluirCadastro(event) {
+  event.preventDefault();
+  document.getElementById('formulario').style.display = 'none';
+  document.getElementById('mensagemSucesso').style.display = 'block';
+}
+
+function responderPesquisa() {
+  alert("Aqui você pode redirecionar para um Google Forms ou similar.");
+}
+
   </script>
 </body>
 </html>
